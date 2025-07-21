@@ -17,23 +17,6 @@ html {
 body {
     font-family: 'Fredoka', sans-serif;
     font-size: clamp(16px, 2dvw, 30px);
-    /* background: #f4790657; */
-}
-
-section, 
-header, 
-footer, 
-aside,
-.content {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content {
-    max-width: 1920px;
-    flex-direction: column;
 }
 
 h1, h2, h3 {
@@ -59,12 +42,18 @@ span,
 label,
 button , tr{
     font-size: clamp(16px, 1.5dvw, 20px);
-    font-weight: bold;
 }
 
 button,
 a {
     cursor: pointer; 
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 1920px;
 }
 
 .d-none {

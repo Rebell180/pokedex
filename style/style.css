@@ -1,0 +1,68 @@
+
+body {
+  background-image: url("../assets/img/background_2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100dvw;
+}
+
+/* #region Header */
+
+header {
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    
+    background-color: rgba(5, 2, 56, 0.128);
+    .content {
+
+        .header-container {
+            
+            img {
+                height: 10dvh;
+                margin: 0rem 1rem;
+            }
+        }
+    }
+} 
+
+/* #endregion Header */
+
+/* #region Main */
+
+main {
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    .pokedex-container {
+
+        background-color: rgba(0, 255, 255, 0.13);
+        width: 100%;
+        min-height: 80dvh;
+
+    }
+
+}
+
+
+
+/* #region Footer */
+
+
+/* #endregion Footer */
+
+
+
+
+
+
+
+/* #endregion Main */
+
+
