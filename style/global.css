@@ -1,0 +1,72 @@
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    position: relative;
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%; /* 62,5% = 10px = 1rem */
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(16px, 2dvw, 30px);
+    /* background: #f4790657; */
+}
+
+section, 
+header, 
+footer, 
+aside,
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    max-width: 1920px;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    width: 100%;
+}
+
+h1 {
+    font-size: clamp(28px, 4dvw, 32px);
+}
+
+h2 {
+    font-size: clamp(20px, 3dvw, 28px);
+}
+
+h3 {
+    font-size: clamp(18px, 2dvw, 24px);
+}
+
+p, 
+textarea, 
+input, 
+span, 
+label,
+button , tr{
+    font-size: clamp(16px, 1.5dvw, 20px);
+    font-weight: bold;
+}
+
+button,
+a {
+    cursor: pointer; 
+}
+
+.d-none {
+    display: none;
+}
