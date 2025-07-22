@@ -1,4 +1,3 @@
-
 /* #region Body Background */
 
 body {
@@ -31,19 +30,20 @@ header {
 
     display: flex;
     justify-content: center;
-    
+
     background-color: rgba(5, 2, 56, 0.128);
+
     .content {
 
         .header-container {
-            
+
             img {
                 height: 10dvh;
                 margin: 0rem 1rem;
             }
         }
     }
-} 
+}
 
 /* #endregion Header */
 
@@ -67,134 +67,6 @@ main {
             flex-direction: row;
             width: 100%;
 
-            /* #region Aside Legend Left */
-
-            .aside-legend-left {
-
-                width: 20%;
-
-                height: 80dvh;
-
-                position: sticky;
-                top: 0;
-                left: 0;
-
-                padding: 1dvw 1dvw;
-
-                background: rgba(255, 192, 203, 0.288);
-
-
-                .aside-content {
-
-                    border: 2px solid pink;
-                    border-radius: 16px;
-                    width: 100%;
-                    
-                    h2 {
-                        padding: 1dvw 1dvw;
-                    }
-
-                    #legend-type-container {
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-            }
-
-            /* #endregion Aside Legend Left */
-
-            .main-content {
-
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-
-                /* #region Section Search Bar */
-
-                .section-search-bar {
-
-                    .content {
-                    
-                        .search-form {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 1rem;
-
-                            .search-input-wrapper {
-                                display: flex;
-                                align-items: center;
-
-                                border: 2px solid #bbbbbb;
-                                border-radius: 16px;
-                                padding: 0.25rem 0.5rem;
-
-                                gap: 1rem;
-
-                                background: #bbbbbb54;
-
-                                img {
-                                    width: 3rem;
-                                    height: 3rem;
-                                }
-
-                                #search-input {
-                                    background: transparent;
-                                    border: none;
-                                    outline: none;
-                                    color: white;
-                                    font-weight: 600;
-                                }
-
-                                #search-input:focus {
-                                    outline: none;
-                                }
-
-                                #search-input::placeholder {
-                                    color: rgba(255, 255, 255, 0.322);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                /* #endregion Section Search Bar */
-
-                /* #region Section Poke Container */
-
-                .section-poke-container {
-                    .content {
-                        #poke-card-container {
-
-                        }
-                    }
-                }
-
-
-
-
-
-                /* #endregion Section Poke Container */
-
-                /* #region Section Load More */
-
-                .section-load-container {
-                    .content {
-                        .button-container {
-                        }
-                    }
-                }
-
-                /* #endregion Section Load More */
-
-
-
-
-
-
-            }
-
 
         }
     }
@@ -202,21 +74,178 @@ main {
 
 /* #endregion Main */
 
+/* #region Main Content */
+
+.main-content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    /* #region Section Search Bar */
+
+    .section-search-bar {
+
+        .content {
+
+            .search-form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+
+                .search-input-wrapper {
+                    display: flex;
+                    align-items: center;
+
+                    border: 2px solid #bbbbbb;
+                    border-radius: 16px;
+                    padding: 0.25rem 0.5rem;
+
+                    gap: 1rem;
+
+                    background: #bbbbbb54;
+
+                    img {
+                        width: 3rem;
+                        height: 3rem;
+                    }
+
+                    #search-input {
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    #search-input:focus {
+                        outline: none;
+                    }
+
+                    #search-input::placeholder {
+                        color: rgba(255, 255, 255, 0.322);
+                    }
+                }
+            }
+        }
+    }
+
+    /* #endregion Section Search Bar */
+
+    /* #region Section Poke Container */
+
+    .section-poke-container {
+        width: 100%;
+        height: 100%;
+        min-height: 35dvw;
+
+        .content {
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+
+            #poke-card-container {
+                display: flex;
+                gap: 1rem;
+                min-width: 100%;
+                min-height: 100%;
+                background: #e708084b;
+            }
+        }
+    }
+
+    /* #endregion Section Poke Container */
+
+    /* #region Section Load More */
+
+    .section-load-container {
+        .content {
+            .button-container {}
+        }
+    }
+
+    /* #endregion Section Load More */
+
+}
+
+/* #endregion Main Content */
+
+/* #region Aside Legend Left */
+
+.aside-legend-left {
+
+    width: 20%;
+
+    height: 80dvh;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    padding: 1dvw 1dvw;
+
+    background: rgba(255, 192, 203, 0.288);
 
 
+    .aside-content {
+
+        border: 2px solid pink;
+        border-radius: 16px;
+        width: 100%;
+
+        h2 {
+            padding: 1dvw 1dvw;
+        }
+
+        #legend-type-container {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+/* #endregion Aside Legend Left */
+
+/* #region Aside Poke Detail */
+
+.aside-poke-detail-container {
+
+    z-index: 3;
+
+    position: absolute;
+    top: 0;
+    width: 100dvw;
+    min-width: 30rem;
+    height: 80dvh;
+    min-height: 20dvh;
+
+    background: rgba(0, 128, 0, 0.342);
 
 
+    .content {
+        /* width: 100%; */
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        #poke-detail-content {
+            width: 40%;
+            height: 70dvh;
+            
+            background: rgba(255, 255, 0, 0.301);
+            border-radius: 16px;
+
+
+        }
+    }
+}
+
+/* #endregion Aside Poke Detail */
 
 /* #region Footer */
 
 
 /* #endregion Footer */
-
-
-
-
-
-
-
-
-
