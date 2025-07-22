@@ -1,7 +1,8 @@
+import { PokeManager } from "./pokemanager";
 
 
-function init() {
-    //render
+async function init() {
+    await PokeManager.renderPokemon();
 }
 
 
