@@ -6,10 +6,12 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 100dvw;
+    background-position: center center;
 }
 
 /* #endregion Body Background */
+
+/* #region Defaults */
 
 .btn {
     border: 2px solid #bbbbbb;
@@ -20,6 +22,7 @@ body {
     background: rgba(255, 0, 0, 0.24);
 }
 
+/* #endregion Defaults */
 
 /* #region Header */
 
@@ -158,10 +161,21 @@ main {
 
                 /* #endregion Section Search Bar */
 
+                /* #region Section Poke Container */
+
+                .section-poke-container {
+                    .content {
+                        #poke-card-container {
+
+                        }
+                    }
+                }
 
 
 
 
+
+                /* #endregion Section Poke Container */
 
                 /* #region Section Load More */
 
