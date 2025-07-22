@@ -11,6 +11,16 @@ body {
 
 /* #endregion Body Background */
 
+.btn {
+    border: 2px solid #bbbbbb;
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+
+    color: white;
+    background: rgba(255, 0, 0, 0.24);
+}
+
+
 /* #region Header */
 
 header {
@@ -46,7 +56,7 @@ main {
 
     .pokedex-container {
 
-        /* background-color: rgba(0, 255, 255, 0.13); */
+        background-color: rgba(0, 255, 255, 0.13);
         width: 100%;
         min-height: 80dvh;
 
@@ -142,20 +152,32 @@ main {
                                     color: rgba(255, 255, 255, 0.322);
                                 }
                             }
-
-                            #search-btn {
-                                border: 2px solid #bbbbbb;
-                                border-radius: 16px;
-                                padding: 0.5rem 1rem;
-
-                                color: white;
-                                background: rgba(255, 0, 0, 0.24);
-                            }
                         }
                     }
                 }
 
                 /* #endregion Section Search Bar */
+
+
+
+
+
+
+                /* #region Section Load More */
+
+                .section-load-container {
+                    .content {
+                        .button-container {
+                        }
+                    }
+                }
+
+                /* #endregion Section Load More */
+
+
+
+
+
 
             }
 
