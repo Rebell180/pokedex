@@ -34,25 +34,43 @@
         <section class="pokedex-container">
             <div class="content">
 
+                <!-- #region Aside Legend -->
+
                 <aside class="aside-legend-left">
                     <div class="aside-content">
                         <h2>Legend</h2>
                         
-                        
+                        <div id="legend-type-container">
+                            <!-- Enter Items here -->
+                        </div>
                     </div>
                 </aside>
 
+                <!-- #endregion Aside Legend -->
 
-                <!-- section main content -->
+                <!-- #region Main Content -->
+                
                 <section class="main-content">
 
+                    <!-- #region Section Search Bar -->
+                    
+                    <section class="section-search-bar">
 
-                <!-- section Searchbar -->
-                <!-- content -->
-                <!-- input -->
-                <!-- icon for search at beginning -->
-                <!-- search button -->
-
+                        <div class="content">
+                            <form class="search-form">
+                                <div class="search-input-wrapper">
+                                    <img src="./assets/icons/search-icon.png" alt="" class="search-icon">
+                                    <input type="text" placeholder="Type to search"
+                                        autocomplete="off" 
+                                        id="search-input">
+                                </div>
+                                <button id="search-btn" type="button">Search</button>
+                            </form>
+                        </div>
+                        
+                    </section>
+                    
+                    <!-- #endregion Section Search Bar -->
 
                 <!-- section Poke Container -->
                 <!-- content -->
@@ -65,6 +83,9 @@
                 <!-- button Load more -->
 
                 </section>
+
+                <!-- #endregion Main Content -->
+                
             </div>
         </section>
 
