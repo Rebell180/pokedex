@@ -145,14 +145,6 @@ main {
             width: 100%;
             height: 100%;
             padding: 2rem;
-
-            #poke-card-container {
-                display: flex;
-                gap: 1rem;
-                min-width: 100%;
-                min-height: 100%;
-                background: #e708084b;
-            }
         }
     }
 
@@ -177,8 +169,7 @@ main {
 .aside-legend-left {
 
     width: 20%;
-
-    height: 80dvh;
+    height: 75dvh;
 
     position: sticky;
     top: 0;
@@ -186,7 +177,9 @@ main {
 
     padding: 1dvw 1dvw;
 
-    background: rgba(255, 192, 203, 0.288);
+    /* background: rgba(255, 192, 203, 0.288); */
+    background-color: rgba(255, 255, 255, 0.356);
+    box-shadow: 2px 3px 8px 2px lightsalmon;
 
 
     .aside-content {
@@ -194,19 +187,100 @@ main {
         border: 2px solid pink;
         border-radius: 16px;
         width: 100%;
+        height: 100%;
 
         h2 {
-            padding: 1dvw 1dvw;
+            padding: 1rem;
+            background: linear-gradient(to right, red, orange, yellow);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
         }
 
         #legend-type-container {
             width: 100%;
-            height: 100%;
+            /* height: 100%; */
+            padding: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            
+            .legend-type-element {
+                height: 2rem;
+
+                img {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
         }
     }
 }
 
 /* #endregion Aside Legend Left */
+
+/* #region Template Poke Card */
+
+#poke-card-collection-container {
+
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .poke-card {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 10dvw;
+        min-width: 150px;
+
+        border: 2px solid black;
+        border-radius: 16px;
+
+        padding: 1rem;
+
+        box-shadow: 2px 2px 3px 0px yellowgreen;
+
+        img {
+            height: 15rem;
+            width: 15rem;
+            border-radius: 16px;
+        }
+
+        span {
+            font-weight: 800;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .type-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+            padding: 2rem;
+
+            .type-icon {
+                height: 3rem;
+                width: 3rem;
+            }
+        }
+    }
+
+    .poke-card:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 8px 0px red;
+    }
+}
+
+/* #endregion Template Poke Card */
 
 /* #region Aside Poke Detail */
 

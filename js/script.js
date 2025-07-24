@@ -1,10 +1,11 @@
-import { PokeManager } from "./pokemanager";
 
+import { PokeManager } from "./pokemanager.js";
 
+/**
+ * Initial function to load the page.
+ */
 async function init() {
-    await PokeManager.renderPokemon();
+    await PokeManager.render();
 }
-
-
 
 init();

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/colors.css">
 
-    <style src="./js/script.js"></style>
+    <script type="module" src="./js/script.js" defer></script>
 </head>
 
 <body>
@@ -26,6 +26,17 @@
         </div>
     </header>
     <!-- OPTIONAL TODO Sound on/off -->
+
+
+    <!-- #region Poke Detail Card -->
+
+    <aside id="aside-poke-detail" class="">
+        <div id="poke-detail-content" class="content">
+            <!-- Dialog is added when an image is clicked -->
+        </div>
+    </aside>
+
+    <!-- #endregion Poke Detail Card -->
 
 
     <main>
@@ -76,7 +87,7 @@
                     
                     <section class="section-poke-container">
                         <div class="content">
-                            <div id="poke-card-container">
+                            <div id="poke-card-collection-container">
                                 <!-- Enter Pokemons here -->
                             </div>
                         </div>
