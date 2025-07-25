@@ -1,11 +1,13 @@
 import { Database } from "./database.js";
 import { Pokemon } from "./pokemon.js";
+import { PokemonType } from "./pokemontype.js";
 import { TemplateManager } from "./templatemanager.js";
 
 export class PokeManager{
 
     
-    static currentPokemons = [];
+    // static currentPokemons = [];
+    static currentIndex = 0;
 
 
     // #region methods
@@ -24,9 +26,7 @@ export class PokeManager{
         await PokeManager.renderLegend();
         await PokeManager.renderPokemon();
 
-        document.getElementById('load-more-btn').addEventListener('click', () => {
-            PokeManager.loadMore();
-        });
+        PokeManager.initEventListener();
 
         PokeManager.unloadSpinner();
     }
@@ -77,22 +77,16 @@ export class PokeManager{
         }
     }
 
-    static renderDialog(pokemnon){
-
-        // const dialogElement = PokeManager.createDialogElement();
-
-    }
-
     // #endregion render functions
 
     // #region spinner
 
     static loadSpinner() {
-
+        document.getElementById('spinner-overlay').style.display = 'block';
     }
 
     static unloadSpinner() {
-
+        document.getElementById('spinner-overlay').style.display = 'none';
     }
 
     /**
@@ -113,6 +107,12 @@ export class PokeManager{
 
     // #region creates
 
+    /**
+     * Creates a html element to render single pokemon card and returns it. 
+     * 
+     * @param {Pokemon} pokemon to create a card with data.
+     * @returns a html element with pokemon data.
+     */
     static createPokeCard(pokemon) {
         const element = document.createElement('div');
         element.id = "pokemon-card-container_" + pokemon.id;
@@ -125,6 +125,12 @@ export class PokeManager{
         return element;
     }
 
+    /**
+     * Creates a html element to render types of single pokemon and returns it. 
+     * 
+     * @param {PokemonType} type to create a card with data.
+     * @returns a html element with pokemon data.
+     */
     static createPokeCardTypes(type) {
         const element = document.createElement('img');
         element.classList.add('type-icon');
@@ -133,6 +139,12 @@ export class PokeManager{
         return element;
     }
 
+    /**
+     * Creates a html element to render on legend item and returns it. 
+     * 
+     * @param {PokemonType} type to create a card with data.
+     * @returns a html element with type data.
+     */
     static createLegendType(type) {
         const element = document.createElement('div');
         element.classList.add('legend-type-element');
@@ -140,10 +152,19 @@ export class PokeManager{
         return element;
     }
 
+    /**
+     * Creates a html element to render the detail dialog of a 
+     * pokemon and returns it. 
+     * 
+     * @param {Pokemon} pokemon to create a card with data.
+     * @returns a html element as dialog with pokemon data.
+     */
     static createDialog(pokemon) {
         const dialogElement = document.createElement('div');
+        dialogElement.id = 'poke-detail-card';
+        dialogElement.style.background = pokemon.types[0].bg_color;
+        dialogElement.innerHTML = TemplateManager.getPokeDetailCard(pokemon);
         //TODO denke dran, man soll die Details des Pokemons durchzappen können. (vor, zurück)
-
 
         return dialogElement;
     }
@@ -151,6 +172,41 @@ export class PokeManager{
     // #endregion creates
 
     // #region event functions
+
+    /**
+     * Adds event listener 
+     */
+    static initEventListener(){
+
+        document.getElementById('load-more-btn').addEventListener('click', () => {
+            PokeManager.loadMore();
+        });
+        
+
+        document.getElementById('poke-detail-content')
+            .addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+    }
+
+    /**
+     * Adds event listener to buttons of pokemon detail dialog
+     */
+    static addDialogEventListener() {
+
+        document.getElementById('aside-poke-detail')
+            .addEventListener('click', () => {
+                PokeManager.closeDetailDialog() }
+            );
+        document.getElementById('detail-btn-forward')
+            .addEventListener('click', () => {
+                PokeManager.goForward();
+            });
+        document.getElementById('detail-btn-backward')
+            .addEventListener('click', () => {
+                PokeManager.goBackward();
+            });  
+    }
 
     /**
      * Loads the next amount of pokemons
@@ -172,24 +228,98 @@ export class PokeManager{
         const pokeDetailContentRef = document.getElementById('poke-detail-content');
         
         pokeDetailContentRef.innerHTML = "";
-        asidePokeDetailRef.classList.remove('d-none');
+        asidePokeDetailRef.style.display = 'flex';
 
         const dialogElement = PokeManager.createDialog(pokemon);
         pokeDetailContentRef.appendChild(dialogElement);
+
+        PokeManager.currentIndex = pokemon.id - 1;
+        PokeManager.setDialogData(pokemon);
+        PokeManager.addDialogEventListener();
     }
+
+    /**
+     * Sets data of pokemon to dialog.
+     * 
+     * @param {Pokemon} pokemon 
+     */
+    static setDialogData(pokemon) {
+        
+
+
+
+        // Set main data 
+        document.getElementById('detail-headline').innerText = `# ${pokemon.id} ${pokemon.name}`;
+        document.getElementById('detail-poke-gif').src = `${pokemon.gifSrc}`;
+        
+        // Set info
+        document.getElementById('detail-info-name').innerText = pokemon.name;
+        document.getElementById('detail-info-height').innerText = pokemon.height;
+        document.getElementById('detail-info-weight').innerText = pokemon.weight;
+
+        // Set stats
+
+        // Set types
+        const typeContainerRef = document.getElementById('detail-type-container');
+        typeContainerRef.innerHTML = "";
+        for(let i = 0; i < pokemon.types.length; i++) {
+            const type = pokemon.types[i];
+            typeContainerRef.innerHTML += TemplateManager.getPokeTypeIcon(type);
+        }
+
+        PokeManager.setBackwardBtnEnabled();
+
+    } 
 
     /**
      * Close current detail dialog
      */
     static closeDetailDialog() {
         const asidePokeDetailRef = document.getElementById('aside-poke-detail');
-        // const pokeDetailContentRef = document.getElementById('poke-detail-content');
-        // pokeDetailContentRef.innerHTML = "";
-        asidePokeDetailRef.classList.add('d-none');
+        const pokeDetailContentRef = document.getElementById('poke-detail-content');
+        pokeDetailContentRef.innerHTML = "";
+        asidePokeDetailRef.style.display = 'none';
+    }
+        
+    /**
+    * Switch to the next pokemon of collection.
+    * 
+    * If there's no more next pokemon loaded it will load more.
+    */
+    static async goForward() {
+        PokeManager.currentIndex++;
+
+        if(PokeManager.currentIndex >= Database.loadedPokemnons.length) {
+            await Database.loadNextPokemonData();
+        }
+        PokeManager.setDialogData(Database.loadedPokemnons[PokeManager.currentIndex]);
+    }   
+
+    /**
+    * Switch to the pokemon before of the collection.
+    * 
+    * If there's no more image before it will disable the button.
+    */
+    static goBackward() {
+        PokeManager.currentIndex--;
+        PokeManager.setDialogData(Database.loadedPokemnons[PokeManager.currentIndex]);
+    }
+
+    /**
+     * Set disabled property of back button on detail card.
+     */
+    static setBackwardBtnEnabled() {
+        if(PokeManager.currentIndex <= 0) {
+            document.getElementById('detail-btn-backward').disabled = true;
+        }
+        else {
+            document.getElementById('detail-btn-backward').disabled = false;
+        }
     }
 
     // #endregion event functions
 
     // #endregion methods
+
 }
 

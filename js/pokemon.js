@@ -10,6 +10,7 @@ export class Pokemon {
     id;
     name;
     imgSrc;
+    gifSrc;
     types = [];
     stats = [];
     weight;
@@ -17,10 +18,11 @@ export class Pokemon {
 
     // #endregion attributes
 
-    constructor ({pId, pName, pImgSrc, pTypes = {}, pStats = {}, pWeight, pHeight}={}) {
+    constructor ({pId, pName, pImgSrc, pGifSrc, pTypes = {}, pStats = {}, pWeight, pHeight}={}) {
         this.id = pId;
         this.name = pName;
         this.imgSrc = pImgSrc;
+        this.gifSrc = pGifSrc;
         this.types = this.formatTypes(pTypes);
         this.stats = this.formatStats(pStats);
         this.weight = this.formatUnit(pWeight);

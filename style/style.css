@@ -15,7 +15,7 @@ body {
 .btn {
     border: 2px solid #bbbbbb;
     border-radius: 16px;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
 
     color: white;
     background: rgba(255, 0, 0, 0.24);
@@ -59,15 +59,13 @@ main {
 
     .pokedex-container {
 
-        background-color: rgba(0, 255, 255, 0.13);
+        /* background-color: rgba(0, 255, 255, 0.13); */
         width: 100%;
         min-height: 80dvh;
 
         .content {
             flex-direction: row;
             width: 100%;
-
-
         }
     }
 }
@@ -86,16 +84,27 @@ main {
     /* #region Section Search Bar */
 
     .section-search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 25dvw;
+        min-width: 300px;
+        height: 4rem;
 
         .content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
 
             .search-form {
+                width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: 1rem;
 
                 .search-input-wrapper {
+                    width: 60%;
                     display: flex;
                     align-items: center;
 
@@ -108,8 +117,8 @@ main {
                     background: #bbbbbb54;
 
                     img {
-                        width: 3rem;
-                        height: 3rem;
+                        width: 2rem;
+                        height: 2rem;
                     }
 
                     #search-input {
@@ -181,6 +190,9 @@ main {
     background-color: rgba(255, 255, 255, 0.356);
     box-shadow: 2px 3px 8px 2px lightsalmon;
 
+    @media (max-width: 780px) {
+        display: none;
+    }
 
     .aside-content {
 
@@ -206,7 +218,7 @@ main {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            
+
             .legend-type-element {
                 height: 2rem;
 
@@ -284,40 +296,175 @@ main {
 
 /* #region Aside Poke Detail */
 
-.aside-poke-detail-container {
+.aside-poke-detail {
 
     z-index: 3;
-
     position: absolute;
-    top: 0;
-    width: 100dvw;
-    min-width: 30rem;
-    height: 80dvh;
-    min-height: 20dvh;
-
-    background: rgba(0, 128, 0, 0.342);
 
 
-    .content {
-        /* width: 100%; */
-        height: 100%;
+    width: 100%;
+    height: 100dvh;
+
+    /* display is set in pokemanager.js | toggle between none & flex */
+    justify-content: center;
+    align-items: center;
+
+    #poke-detail-content {
+        width: 20dvw;
+        min-width: 300px;
+
+        border-radius: 16px;
+    }
+
+    #poke-detail-card {
+
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        
-        #poke-detail-content {
-            width: 40%;
-            height: 70dvh;
-            
-            background: rgba(255, 255, 0, 0.301);
-            border-radius: 16px;
+        justify-content: center;
 
+        width: 30dvw;
+        min-width: 300px;
 
+        border: 2px solid black;
+        border-radius: 16px;
+        ;
+        box-shadow: 0px 0px 12px 5px red;
+        /* background-color: rgba(0, 128, 128, 0.322); */
+
+        h3 {
+            text-align: center;
+        }
+
+        #detail-poke-gif {
+            width: 200px;
+            height: 200px;
+            margin: 2rem 0;
+
+        }
+
+        #detail-type-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            gap: 1rem;
+
+            .detail-type-icon {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+
+        .detail-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 2rem 0;
+
+            .detail-info {
+                width: 50%;
+                padding: 1rem;
+
+                .detail-info-line {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: nowrap;
+                    min-width: 115px;
+
+                    @media(max-width: 900px) {
+                        flex-wrap: wrap;
+                    }
+
+                    span {
+                        font-weight: 800;
+                    }
+
+                    .detail-span {
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .detail-stats {}
+        }
+
+        .detail-btn-container {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+
+            .detail-btn {
+                height: 4rem;
+                width: 4rem;
+                background: transparent;
+                border: none;
+                /* border-inline: none; */
+
+                img {
+                    width: 4rem;
+                    height: 4rem;
+                    border-radius: 99px;
+                }
+            }
         }
     }
 }
 
 /* #endregion Aside Poke Detail */
+
+/* #region Small Spinner */
+
+#spinner-overlay {
+    z-index: 5;
+
+    width: 100%;
+    height: 100dvh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+        border-top: 4px solid #FFF;
+        border-right: 4px solid transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    .loader::after {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border-bottom: 4px solid #FF3D00;
+        border-left: 4px solid transparent;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+}
+
+/* #endregion Small Spinner */
+
 
 /* #region Footer */
 

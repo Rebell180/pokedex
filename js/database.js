@@ -52,6 +52,7 @@ export class Database {
                 pId : result.id,
                 pName : result.name,
                 pImgSrc : result.sprites.front_default,
+                pGifSrc: result.sprites.other.showdown.front_default,
                 pTypes : result.types,
                 pStats : result.stats,
                 pWeight : result.weight / 10 + ' kg',

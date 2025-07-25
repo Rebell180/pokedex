@@ -18,6 +18,17 @@
 
 <body>
 
+    <!-- #region Poke Detail Card -->
+
+    <aside id="aside-poke-detail" class="aside-poke-detail d-none">
+        <div id="poke-detail-content" >
+            <!-- Dialog is added when an image is clicked -->
+        </div>
+    </aside>
+
+    <!-- #endregion Poke Detail Card -->
+
+
     <header>
         <div class="content">
             <div class="header-container">
@@ -27,20 +38,10 @@
     </header>
     <!-- OPTIONAL TODO Sound on/off -->
 
-
-    <!-- #region Poke Detail Card -->
-
-    <aside id="aside-poke-detail" class="">
-        <div id="poke-detail-content" class="content">
-            <!-- Dialog is added when an image is clicked -->
-        </div>
-    </aside>
-
-    <!-- #endregion Poke Detail Card -->
-
-
     <main>
         <!-- #region Pokedex Container -->
+
+        
 
         <section class="pokedex-container">
             <div class="content">
@@ -83,6 +84,14 @@
 
                     <!-- #endregion Section Search Bar -->
 
+                    <!-- #region Spinner -->
+
+                    <div id="spinner-overlay">
+                        <span id="small-spinner" class="loader"></span>
+                    </div>
+
+                    <!-- #endregion Spinner -->
+                    
                     <!-- #region Section Poke Container --> 
                     
                     <section class="section-poke-container">
@@ -113,18 +122,6 @@
                 
             </div>
         </section>
-
-        <!-- #region Aside Detail Card -->
-
-        <aside class="aside-poke-detail-container d-none">
-            <div class="content">
-                <div id="poke-detail-content">
-                    <!-- Enter detail card here! -->
-                </div>
-            </div>
-        </aside>
-
-        <!-- #endregion Aside Detail Card -->
         
         <!-- #endregion Pokedex Container -->
     </main>
