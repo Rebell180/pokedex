@@ -32,6 +32,12 @@ export class Pokemon {
 
     // #region methods
 
+    /**
+     * Formatts loaded type data to pokemon type array
+     *   
+     * @param {Array[PokemonType]} pTypes 
+     * @returns pokemon type array
+     */
     formatTypes(pTypes) {
         const tempTypes = [];
 
@@ -41,6 +47,12 @@ export class Pokemon {
         return tempTypes;
     }
 
+    /**
+     * Formatts loaded stats data to pokemon stats array
+     *   
+     * @param {Array[PokemonType]} pTypes 
+     * @returns pokemon stats array
+     */
     formatStats(pStats) {
         const tempStats = [];
         for(let i = 0; i < pStats.length; i++){
@@ -53,6 +65,13 @@ export class Pokemon {
         return tempStats;
     }
 
+    /**
+     * Formatts units like weight to right format
+     * (replacing "." with ",")
+     *   
+     * @param {number} unit 
+     * @returns formatted unit as string
+     */
     formatUnit(unit) {
         return unit.replace('.', ',');
     }

@@ -1,6 +1,12 @@
 import { PokeManager } from "./pokemanager.js";
 export class TemplateManager {
 
+    /**
+     * Returns html template for adding a card of pokemon.
+     * 
+     * @param {Pokemon} pokemon to display
+     * @returns 
+     */
     static getPokeCard(pokemon) {
         return /*html*/`
             <img src="${pokemon.imgSrc}" alt="">
@@ -12,6 +18,12 @@ export class TemplateManager {
         `;
     }
 
+    /**
+     * Returns html template for adding a detail card of pokemon.
+     * 
+     * @param {Pokemon} pokemon to display
+     * @returns 
+     */
     static getPokeDetailCard(pokemon) {
         return /*html*/`
             <h3 id="detail-headline"># name unknown</h3>
@@ -59,12 +71,24 @@ export class TemplateManager {
         `;
     }
 
+    /**
+     * Returns html template for adding a type icon element to poke card.
+     * 
+     * @param {Pokemon.types.type} type of pokemon
+     * @returns 
+     */
     static getPokeTypeIcon(type) {
         return /*html*/`
             <img src="${type.imgSrc}" alt="" class="detail-type-icon">
         `;
     }
 
+    /**
+     * Returns html template for adding a type element to legend.
+     * 
+     * @param {Pokemon.types.type} type of pokemon
+     * @returns 
+     */
     static getLegendType(type) {
         return /*html*/`
             <img src="${type.imgSrc}" class="type-icon" alt="">
@@ -72,6 +96,13 @@ export class TemplateManager {
         `;
     }
 
+    /**
+     * Returns html template for adding a stat element.
+     * 
+     * @param {Object(Pokemon.stats.stat)} stat of pokemon
+     * @param {number} id of pokemon
+     * @returns 
+     */
     static getPokeStat(stat, id) {
         return /*html*/`
             <div class="poke-xp" role="progressbar">

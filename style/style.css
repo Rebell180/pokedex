@@ -37,10 +37,8 @@ body {
 
 header {
     z-index: 2;
-
     display: flex;
     justify-content: center;
-
     background-color: rgba(5, 2, 56, 0.128);
 
     .content {
@@ -63,7 +61,6 @@ header {
 
 main {
     z-index: 2;
-
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -71,7 +68,6 @@ main {
 
     .pokedex-container {
 
-        /* background-color: rgba(0, 255, 255, 0.13); */
         width: 100%;
         min-height: 80dvh;
 
@@ -103,7 +99,7 @@ main {
         min-width: 250px;
         height: 4rem;
         padding: 0;
-        margin:0;
+        margin: 0;
 
         .content {
             width: 100%;
@@ -180,7 +176,9 @@ main {
 
     .section-load-container {
         .content {
-            .button-container {}
+            .button-container {
+                padding: 2rem;
+            }
         }
     }
 
@@ -196,14 +194,11 @@ main {
 
     width: 20%;
     height: 75dvh;
-
     position: sticky;
     top: 0;
     left: 0;
-
     padding: 1dvw 1dvw;
 
-    /* background: rgba(255, 192, 203, 0.288); */
     background-color: rgba(255, 255, 255, 0.356);
     box-shadow: 2px 3px 8px 2px lightsalmon;
 
@@ -224,12 +219,10 @@ main {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-
         }
 
         #legend-type-container {
             width: 100%;
-            /* height: 100%; */
             padding: 1rem;
 
             display: flex;
@@ -563,5 +556,10 @@ main {
 
 /* #region Footer */
 
+footer {
+    width: 100%;
+    height: 10dvh;
+    background-color: rgba(5, 2, 56, 0.128);
+}
 
 /* #endregion Footer */

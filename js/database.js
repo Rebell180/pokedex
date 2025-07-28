@@ -17,6 +17,9 @@ export class Database {
 
     // #region methods
 
+    /**
+     * Load all types of pokemon
+     */
     static async loadLegendData() {
         try {
             const response = await fetch('https://pokeapi.co/api/v2/type');
@@ -34,6 +37,9 @@ export class Database {
         }
     }
 
+    /**
+     * Load the next amount of pokemon. => property amountPerLoad
+     */
     static async loadNextPokemonData() {
 
         for(let i = Database.startCount; i <= Database.endCount; i++) {
