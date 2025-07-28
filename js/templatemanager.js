@@ -36,8 +36,8 @@ export class TemplateManager {
                         <span id="detail-info-weight" class="detail-span">weight unknown</span>
                     </div>
                 </div>
-                <div class="detail-stats">
-                    
+                <div id="poke-stat-container" class="detail-stats">
+                    <!-- Enter Stats here -->
                 </div>
             </div>
 
@@ -46,8 +46,6 @@ export class TemplateManager {
                     <img id="detail-btn-backward-img" src="./assets/icons/arrow-left.png" alt="">
                 </button>
 
-                
-                
                 <button id="detail-btn-forward" type="button" class="detail-btn">
                     <img id="detail-btn-forward-img" src="./assets/icons/arrow-right.png" alt="">
                     <!-- #region Spinner -->
@@ -72,6 +70,15 @@ export class TemplateManager {
             <img src="${type.imgSrc}" class="type-icon" alt="">
             <span>${type.name}</span>
         `;
+    }
+
+    static getPokeStat(stat, id) {
+        return /*html*/`
+            <div class="poke-xp" role="progressbar">
+                <label for="${stat.name + "_" + id + "_bar"}">${stat.name}: ${stat.value}</label>
+                <div id="${stat.name + "_" + id + "_bar"}" class="progress-bar" style="width: ${stat.value}%"></div>
+            </div>
+        `
     }
 
 }

@@ -317,7 +317,7 @@ main {
 .aside-poke-detail {
 
     z-index: 3;
-    position: absolute;
+    position: fixed;
 
 
     width: 100%;
@@ -348,7 +348,6 @@ main {
         border-radius: 16px;
         ;
         box-shadow: 0px 0px 12px 5px red;
-        /* background-color: rgba(0, 128, 128, 0.322); */
 
         h3 {
             text-align: center;
@@ -377,12 +376,14 @@ main {
         .detail-content {
             width: 100%;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1rem;
+            margin: 1rem 0;
 
             .detail-info {
-                width: 50%;
+                width: 80%;
                 padding: 1rem;
 
                 .detail-info-line {
@@ -406,7 +407,13 @@ main {
             }
 
             .detail-stats {
-                
+                width: 80%;
+                padding: 1rem;
+
+                .progress-bar {
+                    padding: 2px 5%;
+                    background-color: teal;
+                }
             }
         }
 

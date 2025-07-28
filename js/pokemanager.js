@@ -49,6 +49,24 @@ export class PokeManager{
     }
 
     /**
+     * Renders pokemon detail dialog.
+     * 
+     * @param {Pokemon} pokemon 
+     */
+    static renderPokeDetail(pokemon) {
+        const asidePokeDetailRef = document.getElementById('aside-poke-detail');
+        const pokeDetailContentRef = document.getElementById('poke-detail-content');
+        pokeDetailContentRef.innerHTML = "";
+        asidePokeDetailRef.style.display = 'flex';
+
+        const dialogElement = PokeManager.createDialog(pokemon);
+        pokeDetailContentRef.appendChild(dialogElement);
+
+        PokeManager.setDialogData(pokemon);
+        PokeManager.addDialogEventListener();
+    }
+
+    /**
      * Renders all pokemons wich match search input. 
      * 
      * @param {Array[Pokemon]} pokemons 
@@ -278,20 +296,8 @@ export class PokeManager{
      */
     static showDetailDialog(pokemon) {
         PokeManager.currentIndex = pokemon.id - 1;
-
-        const asidePokeDetailRef = document.getElementById('aside-poke-detail');
-        const pokeDetailContentRef = document.getElementById('poke-detail-content');
-        pokeDetailContentRef.innerHTML = "";
-        asidePokeDetailRef.style.display = 'flex';
-
-        const dialogElement = PokeManager.createDialog(pokemon);
-        pokeDetailContentRef.appendChild(dialogElement);
-
-        PokeManager.setDialogData(pokemon);
-        PokeManager.addDialogEventListener();
-
+        PokeManager.renderPokeDetail(pokemon);
         document.querySelector('body').style.overflowY = 'hidden';
-        scrollTo(0,0);
     }
 
     /**
@@ -311,6 +317,12 @@ export class PokeManager{
         document.getElementById('detail-info-weight').innerText = pokemon.weight;
 
         // Set stats
+        const statsContainerRef = document.getElementById('poke-stat-container');
+        statsContainerRef.innerHTML = "";
+        for(let h = 0; h < pokemon.stats.length; h++) {
+            const stat = pokemon.stats[h];
+            statsContainerRef.innerHTML += TemplateManager.getPokeStat(stat, h);
+        }
 
         // Set types
         const typeContainerRef = document.getElementById('detail-type-container');
@@ -374,6 +386,9 @@ export class PokeManager{
         }
     }
 
+    /**
+     * Search pokemons which name contains input and render them.
+     */
     static search() {
         const searchInputRef = document.getElementById('search-input');
         const input = searchInputRef.value;
