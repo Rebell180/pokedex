@@ -9,7 +9,7 @@ export class Database {
     static endCount = 20; 
     static amountPerLoad = 20;
 
-    static loadedPokemnons = [];
+    static loadedPokemons = [];
     static loadedTypes = [];
 
     // #endregion attributes
@@ -59,7 +59,7 @@ export class Database {
                 pHeight : result.height / 10 + " m"
             });
 
-            Database.loadedPokemnons.push(pokemon);
+            Database.loadedPokemons.push(pokemon);
         }
 
         Database.startCount = Database.startCount + Database.amountPerLoad;

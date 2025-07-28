@@ -39,21 +39,39 @@ export class PokeManager{
         const pokeContainerRef = document.getElementById('poke-card-collection-container');
         pokeContainerRef.innerHTML = "";
 
-        for(let i = 0; i < Database.loadedPokemnons.length; i++) {
-            const newPokemon = Database.loadedPokemnons[i];
+        for(let i = 0; i < Database.loadedPokemons.length; i++) {
+            const newPokemon = Database.loadedPokemons[i];
             const pokeCard = PokeManager.createPokeCard(newPokemon);
             pokeContainerRef.appendChild(pokeCard);
         }
 
-        PokeManager.renderPokemonTypes();
+        PokeManager.renderPokemonTypes(Database.loadedPokemons);
+    }
+
+    /**
+     * Renders all pokemons wich match search input. 
+     * 
+     * @param {Array[Pokemon]} pokemons 
+     */
+    static renderSearchedPokemon(pokemons) {
+        const pokeContainerRef = document.getElementById('poke-card-collection-container');
+        pokeContainerRef.innerHTML = "";
+
+        for(let i = 0; i < pokemons.length; i++) {
+            const newPokemon = pokemons[i];
+            const pokeCard = PokeManager.createPokeCard(newPokemon);
+            pokeContainerRef.appendChild(pokeCard);
+        }
+
+        PokeManager.renderPokemonTypes(pokemons);
     }
 
     /**
      * Renders the type icons of pokemon cards.
      */
-    static renderPokemonTypes() {
-        for(let j = 0; j < Database.loadedPokemnons.length; j++) {
-            const pokemon = Database.loadedPokemnons[j];
+    static renderPokemonTypes(pokemons) {
+        for(let j = 0; j < pokemons.length; j++) {
+            const pokemon = pokemons[j];
             const pokeTypeContainerRef = document.getElementById('type-container_' + pokemon.id);
             
             for(let k = 0; k < pokemon.types.length; k++) {
@@ -212,6 +230,16 @@ export class PokeManager{
             .addEventListener('click', function(event) {
                 event.stopPropagation();
             });
+
+        document.getElementById('search-btn')
+            .addEventListener('click', () => {
+                PokeManager.search();
+            });
+
+        document.getElementById('search-input')
+            .addEventListener('input', () => {
+                PokeManager.search();
+            });
     }
 
     /**
@@ -249,18 +277,21 @@ export class PokeManager{
      * @param {Pokemon} pokemon for displaying details 
      */
     static showDetailDialog(pokemon) {
+        PokeManager.currentIndex = pokemon.id - 1;
+
         const asidePokeDetailRef = document.getElementById('aside-poke-detail');
         const pokeDetailContentRef = document.getElementById('poke-detail-content');
-        
         pokeDetailContentRef.innerHTML = "";
         asidePokeDetailRef.style.display = 'flex';
 
         const dialogElement = PokeManager.createDialog(pokemon);
         pokeDetailContentRef.appendChild(dialogElement);
 
-        PokeManager.currentIndex = pokemon.id - 1;
         PokeManager.setDialogData(pokemon);
         PokeManager.addDialogEventListener();
+
+        document.querySelector('body').style.overflowY = 'hidden';
+        scrollTo(0,0);
     }
 
     /**
@@ -301,6 +332,8 @@ export class PokeManager{
         const pokeDetailContentRef = document.getElementById('poke-detail-content');
         pokeDetailContentRef.innerHTML = "";
         asidePokeDetailRef.style.display = 'none';
+
+        document.querySelector('body').style.overflowY = 'auto';
     }
         
     /**
@@ -311,12 +344,12 @@ export class PokeManager{
     static async goForward() {
         PokeManager.currentIndex++;
 
-        if(PokeManager.currentIndex >= Database.loadedPokemnons.length) {
+        if(PokeManager.currentIndex >= Database.loadedPokemons.length) {
             PokeManager.loadMoreDetailSpinner();
             await PokeManager.loadMore();
             PokeManager.unloadMoreDetailSpinner();
         }
-        PokeManager.setDialogData(Database.loadedPokemnons[PokeManager.currentIndex]);
+        PokeManager.setDialogData(Database.loadedPokemons[PokeManager.currentIndex]);
     }   
 
     /**
@@ -326,7 +359,7 @@ export class PokeManager{
     */
     static goBackward() {
         PokeManager.currentIndex--;
-        PokeManager.setDialogData(Database.loadedPokemnons[PokeManager.currentIndex]);
+        PokeManager.setDialogData(Database.loadedPokemons[PokeManager.currentIndex]);
     }
 
     /**
@@ -338,6 +371,20 @@ export class PokeManager{
         }
         else {
             document.getElementById('detail-btn-backward').disabled = false;
+        }
+    }
+
+    static search() {
+        const searchInputRef = document.getElementById('search-input');
+        const input = searchInputRef.value;
+
+        if(input.length >= 3) {
+            const pokemons = Database.loadedPokemons.filter((pokemon) => pokemon.name.includes(input));
+            console.log(pokemons);
+            PokeManager.renderSearchedPokemon(pokemons);
+        }
+        else if(input.length == 0) {
+            PokeManager.renderPokemon();
         }
     }
 
