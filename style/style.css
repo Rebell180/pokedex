@@ -21,6 +21,16 @@ body {
     background: rgba(255, 0, 0, 0.24);
 }
 
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* #endregion Defaults */
 
 /* #region Header */
@@ -145,10 +155,11 @@ main {
 
     /* #region Section Poke Container */
 
-    .section-poke-container {
+    #section-poke-container {
         width: 100%;
         height: 100%;
         min-height: 35dvw;
+        display: none;
 
         .content {
             width: 100%;
@@ -416,54 +427,122 @@ main {
 
 /* #endregion Aside Poke Detail */
 
-/* #region Small Spinner */
-
-#spinner-overlay {
-    z-index: 5;
-
+/* #region Big Spinner */
+#loader-container {
     width: 100%;
-    height: 100dvh;
-    /* display: flex;
+    height: 80dvh;
+    display: none;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 
-    .loader {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
+    .lds-dual-ring {
+        color: red
+    }
+
+    .lds-dual-ring,
+    .lds-dual-ring:after {
+        box-sizing: border-box;
+    }
+
+    .lds-dual-ring {
         display: inline-block;
-        border-top: 4px solid #FFF;
-        border-right: 4px solid transparent;
-        box-sizing: border-box;
-        animation: rotation 1s linear infinite;
+        width: 112px;
+        height: 112px;
     }
 
-    .loader::after {
-        content: '';
-        box-sizing: border-box;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 96px;
+        height: 96px;
+        margin: 8px;
         border-radius: 50%;
-        border-bottom: 4px solid #FF3D00;
-        border-left: 4px solid transparent;
-    }
-
-    @keyframes rotation {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
+        border: 6.4px solid currentColor;
+        border-color: currentColor transparent currentColor transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
     }
 
 }
 
-/* #endregion Small Spinner */
+/* #endregion Big Spinner */
+
+/* #region small Spinner */
+#loader-small-container {
+    width: 100%;
+    height: 5dvh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    .lds-dual-ring-small {
+        color: red
+    }
+
+    .lds-dual-ring-small,
+    .lds-dual-ring-small:after {
+        box-sizing: border-box;
+    }
+
+    .lds-dual-ring-small {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+    }
+
+    .lds-dual-ring-small:after {
+        content: " ";
+        display: block;
+        width: 48px;
+        height: 48px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6.4px solid currentColor;
+        border-color: currentColor transparent currentColor transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+}
+
+/* #endregion small Spinner */
+
+/* #region small detail Spinner */
+#loader-small-detail-container {
+    width: 100%;
+    height: 5dvh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    .lds-dual-ring-small-detail {
+        color: red
+    }
+
+    .lds-dual-ring-small-detail,
+    .lds-dual-ring-small-detail:after {
+        box-sizing: border-box;
+    }
+
+    .lds-dual-ring-small-detail {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+    }
+
+    .lds-dual-ring-small-detail:after {
+        content: " ";
+        display: block;
+        width: 48px;
+        height: 48px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6.4px solid currentColor;
+        border-color: currentColor transparent currentColor transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+}
+
+/* #endregion small detail Spinner */
 
 
 /* #region Footer */

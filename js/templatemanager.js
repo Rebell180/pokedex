@@ -45,8 +45,16 @@ export class TemplateManager {
                 <button id="detail-btn-backward" type="button" class="detail-btn">
                     <img id="detail-btn-backward-img" src="./assets/icons/arrow-left.png" alt="">
                 </button>
+
+                
+                
                 <button id="detail-btn-forward" type="button" class="detail-btn">
-                    <img src="./assets/icons/arrow-right.png" alt="">
+                    <img id="detail-btn-forward-img" src="./assets/icons/arrow-right.png" alt="">
+                    <!-- #region Spinner -->
+                        <div id="loader-small-detail-container">
+                            <div class="lds-dual-ring-small-detail"></div>
+                        </div>
+                    <!-- #endregion Spinner -->
                 </button>
             </div>
             

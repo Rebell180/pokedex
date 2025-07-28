@@ -18,23 +18,23 @@ export class PokeManager{
      * Renders pokemons and legend and load data.
      */
     static async render() {
-        PokeManager.loadSpinner();
 
+        PokeManager.loadSpinner();
         await Database.loadLegendData();
         await Database.loadNextPokemonData();
+        PokeManager.unloadSpinner();
 
-        await PokeManager.renderLegend();
-        await PokeManager.renderPokemon();
+        PokeManager.renderLegend();
+        PokeManager.renderPokemon();
 
         PokeManager.initEventListener();
 
-        PokeManager.unloadSpinner();
     }
 
     /**
      * Renders current pokemons. 
      */
-    static async renderPokemon() {
+    static renderPokemon() {
 
         const pokeContainerRef = document.getElementById('poke-card-collection-container');
         pokeContainerRef.innerHTML = "";
@@ -67,7 +67,7 @@ export class PokeManager{
     /**
      * Renders aside legend of pokemon types.
      */
-    static async renderLegend() {
+    static renderLegend() {
         const legendContainerRef = document.getElementById('legend-type-container');
 
         for(let i = 0; i < Database.loadedTypes.length; i++) {
@@ -81,26 +81,51 @@ export class PokeManager{
 
     // #region spinner
 
+    /**
+     * Displays spinner as user feedback until data was loaded.
+     */
     static loadSpinner() {
-        document.getElementById('spinner-overlay').style.display = 'block';
+        document.getElementById('loader-container').style.display = 'flex';
     }
 
+    /**
+     * Removes spinner and displays poke card container.
+     */
     static unloadSpinner() {
-        document.getElementById('spinner-overlay').style.display = 'none';
+        document.getElementById('loader-container').style.display = 'none';
+        document.getElementById('section-poke-container').style.display = 'block';
     }
 
     /**
      * Unloads the load more button and replace it with small spinner.
      */    
-    static loadSubSpinner(){
-        // TODO toggle load more button with spinner
+    static loadMoreSpinner(){
+        document.getElementById('loader-small-container').style.display = 'flex';
+        document.getElementById('load-btn-container').style.display = 'none';
     }
 
     /**
      * Unloads the small spinner and replace it with load more button.
      */
-    static unloadSubSpinner() {
-        //TODO toggle spinner with load more button
+    static unloadMoreSpinner() {
+        document.getElementById('loader-small-container').style.display = 'none';
+        document.getElementById('load-btn-container').style.display = 'flex';
+    }
+
+    /**
+     * Unloads the go forward button and replace it with small spinner.
+     */    
+    static loadMoreDetailSpinner(){
+        document.getElementById('loader-small-detail-container').style.display = 'flex';
+        document.getElementById('detail-btn-forward-img').style.display = 'none';
+    }
+
+    /**
+     * Unloads the small spinner and replace it with go forward button.
+     */
+    static unloadMoreDetailSpinner() {
+        document.getElementById('loader-small-detail-container').style.display = 'none';
+        document.getElementById('detail-btn-forward-img').style.display = 'block';
     }
 
     // #endregion spinner
@@ -212,10 +237,10 @@ export class PokeManager{
      * Loads the next amount of pokemons
      */
     static async loadMore() {
-        PokeManager.loadSubSpinner();
+        PokeManager.loadMoreSpinner();
         await Database.loadNextPokemonData();
-        await PokeManager.renderPokemon();
-        PokeManager.unloadSubSpinner();
+        PokeManager.renderPokemon();
+        PokeManager.unloadMoreSpinner();
     }
 
     /**
@@ -245,9 +270,6 @@ export class PokeManager{
      */
     static setDialogData(pokemon) {
         
-
-
-
         // Set main data 
         document.getElementById('detail-headline').innerText = `# ${pokemon.id} ${pokemon.name}`;
         document.getElementById('detail-poke-gif').src = `${pokemon.gifSrc}`;
@@ -290,7 +312,9 @@ export class PokeManager{
         PokeManager.currentIndex++;
 
         if(PokeManager.currentIndex >= Database.loadedPokemnons.length) {
-            await Database.loadNextPokemonData();
+            PokeManager.loadMoreDetailSpinner();
+            await PokeManager.loadMore();
+            PokeManager.unloadMoreDetailSpinner();
         }
         PokeManager.setDialogData(Database.loadedPokemnons[PokeManager.currentIndex]);
     }   

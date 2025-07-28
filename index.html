@@ -21,13 +21,12 @@
     <!-- #region Poke Detail Card -->
 
     <aside id="aside-poke-detail" class="aside-poke-detail d-none">
-        <div id="poke-detail-content" >
+        <div id="poke-detail-content">
             <!-- Dialog is added when an image is clicked -->
         </div>
     </aside>
 
     <!-- #endregion Poke Detail Card -->
-
 
     <header>
         <div class="content">
@@ -41,8 +40,6 @@
     <main>
         <!-- #region Pokedex Container -->
 
-        
-
         <section class="pokedex-container">
             <div class="content">
 
@@ -51,7 +48,7 @@
                 <aside class="aside-legend-left">
                     <div class="aside-content">
                         <h2>Legend</h2>
-                        
+
                         <div id="legend-type-container">
                             <!-- Enter Items here -->
                         </div>
@@ -61,56 +58,65 @@
                 <!-- #endregion Aside Legend -->
 
                 <!-- #region Main Content -->
-                
+
                 <section class="main-content">
 
                     <!-- #region Section Search Bar -->
-                    
+
                     <section class="section-search-bar">
 
                         <div class="content">
                             <form class="search-form">
                                 <div class="search-input-wrapper">
                                     <img src="./assets/icons/search-icon.png" alt="" class="search-icon">
-                                    <input type="text" placeholder="Type to search"
-                                        autocomplete="off" 
+                                    <input type="text" placeholder="Type to search" autocomplete="off"
                                         id="search-input">
                                 </div>
                                 <button id="search-btn" class="btn" type="button">Search</button>
                             </form>
                         </div>
-                        
+
                     </section>
 
                     <!-- #endregion Section Search Bar -->
 
                     <!-- #region Spinner -->
 
-                    <div id="spinner-overlay">
-                        <span id="small-spinner" class="loader"></span>
+                    <div id="loader-container" class="">
+                        <div class="lds-dual-ring"></div>
                     </div>
 
                     <!-- #endregion Spinner -->
-                    
-                    <!-- #region Section Poke Container --> 
-                    
-                    <section class="section-poke-container">
+
+                    <!-- #region Section Poke Container -->
+
+                    <section id="section-poke-container">
                         <div class="content">
                             <div id="poke-card-collection-container">
                                 <!-- Enter Pokemons here -->
                             </div>
                         </div>
                     </section>
-                        
+
                     <!-- #endregion Section Poke Container -->
 
                     <!-- #region Section Load Container -->
 
                     <section class="section-load-container">
                         <div class="content">
-                            <div class="button-container">
+
+                            <div id="load-btn-container" class="button-container">
                                 <button id="load-more-btn" class="btn" type="button">Load more!</button>
                             </div>
+
+                            <!-- #region Spinner -->
+
+                            <div id="loader-small-container">
+                                <div class="lds-dual-ring-small"></div>
+                            </div>
+
+                            <!-- #endregion Spinner -->
+                            
                         </div>
                     </section>
 
@@ -119,10 +125,10 @@
                 </section>
 
                 <!-- #endregion Main Content -->
-                
+
             </div>
         </section>
-        
+
         <!-- #endregion Pokedex Container -->
     </main>
 
