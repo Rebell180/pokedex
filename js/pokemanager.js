@@ -385,10 +385,11 @@ export class PokeManager {
      */
     static setBackwardBtnEnabled() {
         if (PokeManager.currentIndex <= 0) {
-            document.getElementById('detail-btn-backward').disabled = true;
+            document.getElementById('detail-btn-backward').style.visibility = "hidden";
+
         }
         else {
-            document.getElementById('detail-btn-backward').disabled = false;
+            document.getElementById('detail-btn-backward').style.visibility = "visible";
         }
     }
 
