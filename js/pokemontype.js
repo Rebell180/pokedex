@@ -13,9 +13,7 @@ export class PokemonType {
     // #endregion attributes
 
     constructor (pName) {
-
         this.name = pName;
-        
         this.setStyles();
     }
 

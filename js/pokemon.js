@@ -1,7 +1,7 @@
 import { PokemonType } from "./pokemontype.js";
 
 /**
- * 
+ * Contains data for one single pokemon.
  */
 export class Pokemon {
 
@@ -27,7 +27,6 @@ export class Pokemon {
         this.stats = this.formatStats(pStats);
         this.weight = this.formatUnit(pWeight);
         this.height = this.formatUnit(pHeight);
-
     }
 
     // #region methods

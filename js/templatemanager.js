@@ -67,7 +67,6 @@ export class TemplateManager {
                     <!-- #endregion Spinner -->
                 </button>
             </div>
-            
         `;
     }
 

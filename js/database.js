@@ -14,7 +14,6 @@ export class Database {
 
     // #endregion attributes
 
-
     // #region methods
 
     /**
@@ -73,9 +72,4 @@ export class Database {
     }
 
     // #endregion methods
-
-
-
-
-
 }
