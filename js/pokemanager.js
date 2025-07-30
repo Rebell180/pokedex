@@ -377,7 +377,7 @@ export class PokeManager {
      */
     static search() {
         const searchInputRef = document.getElementById('search-input');
-        const input = searchInputRef.value;
+        const input = searchInputRef.value.toLowerCase();
         if (input.length >= 3) {
             PokeManager.searchedPokemons = Database.loadedPokemons.filter((pokemon) => pokemon.name.includes(input));
             PokeManager.currentIndex = 0;
