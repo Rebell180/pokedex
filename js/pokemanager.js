@@ -360,10 +360,14 @@ export class PokeManager {
             document.getElementById('detail-btn-backward').style.visibility = "visible";
         }
 
-        if(PokeManager.searchedIndex >= PokeManager.searchedPokemons.length - 1) {
+        if(PokeManager.searchedIndex >= (PokeManager.searchedPokemons.length - 1)) {
             document.getElementById('detail-btn-forward').style.visibility = 'hidden';
         }
         else {
+            document.getElementById('detail-btn-forward').style.visibility = 'visible';
+        }
+
+        if(PokeManager.currentIndex >= 0 && PokeManager.searchedIndex == 0) {
             document.getElementById('detail-btn-forward').style.visibility = 'visible';
         }
     }
@@ -376,6 +380,7 @@ export class PokeManager {
         const input = searchInputRef.value;
         if (input.length >= 3) {
             PokeManager.searchedPokemons = Database.loadedPokemons.filter((pokemon) => pokemon.name.includes(input));
+            PokeManager.currentIndex = 0;
             PokeManager.renderSearchedPokemon();
             document.getElementById('load-more-btn').style.visibility = 'hidden';
         }
