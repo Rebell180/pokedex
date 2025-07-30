@@ -260,7 +260,7 @@ export class PokeManager {
         document.getElementById('detail-info-weight').innerText = pokemon.weight;
         PokeManager.setStatData(pokemon.stats);
         PokeManager.setDetailTypes(pokemon.types);
-        PokeManager.setBackwardBtnEnabled();
+        PokeManager.setSwitchBtnEnabled();
     }
 
     /**
@@ -321,9 +321,6 @@ export class PokeManager {
     static async goForward() {
         if(PokeManager.searchedPokemons.length > 0) {
             PokeManager.searchedIndex++;
-            if (PokeManager.searchedIndex >= PokeManager.searchedPokemons.length) {
-                PokeManager.searchedIndex = 0;
-            }
             PokeManager.setDialogData(PokeManager.searchedPokemons[PokeManager.searchedIndex]);
         }
         else {
@@ -355,12 +352,19 @@ export class PokeManager {
     /**
      * Set disabled property of back button on detail card.
      */
-    static setBackwardBtnEnabled() {
+    static setSwitchBtnEnabled() {
         if (PokeManager.currentIndex <= 0 && PokeManager.searchedIndex <= 0) {
             document.getElementById('detail-btn-backward').style.visibility = "hidden";
         }
         else {
             document.getElementById('detail-btn-backward').style.visibility = "visible";
+        }
+
+        if(PokeManager.searchedIndex >= PokeManager.searchedPokemons.length - 1) {
+            document.getElementById('detail-btn-forward').style.visibility = 'hidden';
+        }
+        else {
+            document.getElementById('detail-btn-forward').style.visibility = 'visible';
         }
     }
 
